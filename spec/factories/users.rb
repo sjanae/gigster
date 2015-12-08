@@ -1,11 +1,8 @@
 FactoryGirl.define do
   factory :user do
-    name "MyString"
-    email "MyString"
-    password_digest "MyString"
-    location "MyString"
-    fan false
-    band false
+    name { Faker::Name.name }
+    email { Faker::Internet.email }
+    password_digest { Faker::Internet.password }
   end
 
 end
