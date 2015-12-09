@@ -1,3 +1,3 @@
 class BandSerializer < ActiveModel::Serializer
-  attributes :id, :name, :email,:location, :avatar_url, :genre
+  attributes :id, :type, :name, :email, :location, :avatar, :genre
 end
