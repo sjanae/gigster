@@ -3,7 +3,7 @@ class BandsController < UsersController
 
   def index
     @bands = Band.all
-   render json: @bands
+    render json: @bands
   end
 
   # def create
