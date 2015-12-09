@@ -7,3 +7,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 users = FactoryGirl.create_list(:user, 5)
+
+bands = FactoryGirl.create_list(:band, 5)

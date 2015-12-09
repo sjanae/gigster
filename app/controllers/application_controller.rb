@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
   include Pundit
-  protect_from_forgery with: :exception
+  # protect_from_forgery with: :exception
   include ActionController::HttpAuthentication::Basic::ControllerMethods
   include ActionController::HttpAuthentication::Token::ControllerMethods
 

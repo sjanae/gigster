@@ -1,2 +1,6 @@
-class Fan < ActiveRecord::Base
+class Fan < User
+
+  def band?
+    false
+  end
 end

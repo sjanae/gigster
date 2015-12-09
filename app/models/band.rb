@@ -1,2 +1,4 @@
-class Band < ActiveRecord::Base
+class Band < User
+
+
 end
