@@ -13,7 +13,6 @@ gem 'material_icons'
 gem 'rack-cors', require: 'rack/cors'
 gem 'rails_12factor'
 gem 'rails-api'
-gem 'pg'
 gem 'puma'
 gem 'pundit'
 gem 'sass-rails', '~> 5.0'
@@ -33,4 +32,8 @@ group :test, :development do
   gem 'faker'
   gem 'rspec-rails'
   gem "codeclimate-test-reporter", require: nil
+end
+
+group :production do
+  gem 'pg'
 end
