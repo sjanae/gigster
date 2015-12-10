@@ -10,6 +10,6 @@ class FansController < UsersController
   private
 
   def fan_params
-    params.require(:fan).permit(:email, :password, :location, :avatar_url)
+    params.require(:fan).permit(:email, :password, :location)
   end
 end
