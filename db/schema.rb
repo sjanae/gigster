@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 20151210154929) do
     t.datetime "updated_at",                      null: false
     t.string   "type"
     t.string   "genre"
-    t.string   "avatar"
+    t.string   "avatar_url"
   end
 
 end

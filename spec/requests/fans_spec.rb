@@ -3,13 +3,14 @@ require 'request_helper'
 require 'pry'
 
 
-RSpec.describe "Bands" do
+RSpec.describe "Fans" do
 
 
   describe "index" do
-    it "index's all bands" do
-      get bands_path
+    it "index's all fans" do
+      get fans_path
       expect(response).to have_http_status(200)
     end
   end
+  
 end

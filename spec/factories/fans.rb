@@ -1,9 +1,8 @@
 FactoryGirl.define do
   factory :fan do
-    email "MyString"
-password_digest "MyString"
-location "MyString"
-avatar_url "MyString"
+    email { Faker::Internet.email }
+    password_digest { Faker::Internet.password }
+    location { Faker::Address.city }
   end
 
 end
