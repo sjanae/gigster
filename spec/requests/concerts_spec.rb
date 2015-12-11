@@ -18,7 +18,18 @@ RSpec.describe "Concerts" do
     end
   end
 
-  describe "create"
-    it "allows a band to create a concert"
-    
+  describe "create" do
+    let(:concert3) { FactoryGirl.attributes_for(:concert)}
+
+    it "creates a concert" do
+      token = FactoryGirl.create(:access_token)
+      post concerts_path, {concert: concert3}, { 'authorization' => "Bearer #{token.token}"}
+      expect(response).to have_http_status(:success)
+    end
+
+    it "rejects a fan" 
+
+  end
+
+
 end

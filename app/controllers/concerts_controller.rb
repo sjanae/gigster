@@ -18,6 +18,7 @@ class ConcertsController < ApplicationController
   # POST /concerts
   # POST /concerts.json
   def create
+    return unauthorized unless current_user.band = true
     @concert = Concert.new(concert_params)
 
     if @concert.save
