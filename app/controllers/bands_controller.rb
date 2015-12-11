@@ -1,17 +1,30 @@
 class BandsController < UsersController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:update, :destroy]
 
   def index
     @bands = Band.all
     render json: @bands
   end
 
-  def destroy
-    @users = User.find(params[:id])
-    @users.destroy
-    render json: @users, status: :success
+  def show
+    @band = Band.find(params[:id])
+    render json: @band
   end
 
+  def update
+    @band = Band.find(params[:id])
+    if @band.update(user_params)
+    render json: @band, status: :success
+    else
+      render json: @band.errors, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @band = Band.find(params[:id])
+    @band.destroy
+    render json: @band, status: :success
+  end
 
   private
 
