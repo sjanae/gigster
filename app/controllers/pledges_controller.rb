@@ -4,7 +4,7 @@ class PledgesController < ApplicationController
   before_action :set_concert
 
   def new
-    @pledge = @concert.pledge.build(pledge_params)
+    @pledge = @concert.pledges.build(pledge_params)
   end
 
   def index
@@ -18,7 +18,7 @@ class PledgesController < ApplicationController
   end
 
   def create
-    @pledge = @concert.pledge.build(pledge_params)
+    @pledge = @concert.pledges.build(pledge_params)
     respond_to do |format|
     if @pledge.save
 
