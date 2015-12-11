@@ -2,11 +2,8 @@ class BandsController < UsersController
   before_action :authenticate_user!, only: [:update, :destroy]
 
   def index
-    if params[:q]
-      @bands = Band.where("email ILIKE ?", "%#{params[:q]}%")
-    else
-      @bands = Band
-    end
+    @bands = Band.all
+    render json: @bands
   end
 
   def show
