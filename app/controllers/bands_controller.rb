@@ -6,8 +6,7 @@ class BandsController < UsersController
       @bands = Band.where("email ILIKE ?", "%#{params[:q]}%")
     else
       @bands = Band
-  end
-    render json: @bands
+    end
   end
 
   def show
