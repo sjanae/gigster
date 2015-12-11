@@ -28,6 +28,10 @@ class FansController < UsersController
 
   private
 
+  def set_fan
+    @fan = Fan.find(params[:id])
+  end
+
   def fan_params
     params.require(:fan).permit(:email, :password, :location)
   end

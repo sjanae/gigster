@@ -27,10 +27,13 @@ class BandsController < UsersController
   def destroy
     @band = Band.find(params[:id])
     @band.destroy
-    render json: @band, status: :success
   end
 
   private
+
+  def set_band
+    @band = Band.find(params[:id])
+  end
 
   def band_params
     params.require(:band).permit(:email, :password, :name, :genre, :location)
