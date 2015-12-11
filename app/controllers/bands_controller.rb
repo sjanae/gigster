@@ -27,6 +27,7 @@ class BandsController < UsersController
   def destroy
     @band = Band.find(params[:id])
     @band.destroy
+    render head :no_content
   end
 
   private

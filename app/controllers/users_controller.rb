@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    render json: status: :success
+    render head :no_content
   end
 
   private
