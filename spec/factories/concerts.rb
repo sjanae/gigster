@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :concert do
-    location "MyString"
-venue "MyString"
-success false
+    location { Faker::Address.city }
+    venue { Faker::Name.name }
+    success false
   end
 
 end
