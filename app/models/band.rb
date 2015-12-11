@@ -1,5 +1,5 @@
 class Band < User
-# has_many :concerts, dependent: :destroy
-has_many :fans
+has_many :concert
+
 
 end
