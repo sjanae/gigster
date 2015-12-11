@@ -26,7 +26,6 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-
     if @user.update(user_params)
     render json: @user, status: :success
     else
@@ -38,7 +37,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    render json: @user, status: :success
+    render json: status: :success
   end
 
   private
