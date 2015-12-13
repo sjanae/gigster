@@ -1,50 +1,52 @@
 class ConcertsController < ApplicationController
-  before_action :set_concert, only: [:show, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_concert, only: [:show, :edit, :update, :destroy]
 
-  # GET /concerts
-  # GET /concerts.json
+
   def index
     @concerts = Concert.all
-
     render json: @concerts
   end
 
-  # GET /concerts/1
-  # GET /concerts/1.json
+  def new
+    @concert = Concert.new
+  end
+
   def show
     render json: @concert
   end
 
-  # POST /concerts
-  # POST /concerts.json
-  def create
-    return unauthorized unless current_user.band = true
-    @concert = Concert.new(concert_params)
+  def edit
+    
+  end
 
-    if @concert.save
+
+  def create
+    @concert = current_user.concerts.build(concert_params)
+    respond_to do |format|
+      if @concert.save
+        render json: @concert, status: :created, location: @concert
+      else
+        render json: @concert.errors, status: :unprocessable_entity
+      end
+    end
+  end
+
+
+  def update
+    respond_to do |format|
+
+    if @concert.update(concert_params)
       render json: @concert, status: :created, location: @concert
     else
       render json: @concert.errors, status: :unprocessable_entity
+      end
     end
   end
 
-  # PATCH/PUT /concerts/1
-  # PATCH/PUT /concerts/1.json
-  def update
-    @concert = Concert.find(params[:id])
 
-    if @concert.update(concert_params)
-      head :no_content
-    else
-      render json: @concert.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /concerts/1
-  # DELETE /concerts/1.json
   def destroy
     @concert.destroy
-
     head :no_content
   end
 
