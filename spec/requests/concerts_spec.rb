@@ -18,6 +18,17 @@ RSpec.describe "Concerts" do
     end
   end
 
+
+    describe "show" do
+      it "shows a concert" do
+        get concerts_path, concert1
+        expect(response).to have_http_status(:success)
+        expect(json.count).to eq 1
+      end
+    end
+
+
+
   describe "create" do
     let(:concert3) { FactoryGirl.attributes_for(:concert)}
 
@@ -27,7 +38,7 @@ RSpec.describe "Concerts" do
       expect(response).to have_http_status(:success)
     end
 
-    it "rejects a fan" 
+    it "rejects a fan"
 
   end
 
