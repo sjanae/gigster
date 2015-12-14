@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def edit
 
   end
-
+  
   def new
     @user = User.new
   end
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-    render json: @user, status: :success
+      render json: @user, status: :success
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -55,19 +55,19 @@ class UsersController < ApplicationController
 
   private
 
-    def set_user
-      @user = User.find(params[:id])
-    end
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    def user_params
-      params.require(:user).permit(:email, :password)
-    end
+  def user_params
+    params.require(:user).permit(:email, :password)
+  end
 
-    def band_params
-      params.require(:user).permit(:name, :genre, :location)
-    end
+  def band_params
+    params.require(:user).permit(:name, :genre, :location)
+  end
 
-    def fan_params
-      params.require(:user).permit(:location)
-    end
+  def fan_params
+    params.require(:user).permit(:location)
+  end
 end
