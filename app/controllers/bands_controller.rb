@@ -33,6 +33,6 @@ class BandsController < ApplicationController
   end
 
   def band_params
-    params.require(:band).permit(:name, :genre, :location)
+    params.require(:band).permit(:name, :genre, :location, :audio_url, :video_url)
   end
 end
