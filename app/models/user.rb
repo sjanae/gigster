@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   validates_presence_of :email, :password
+  attr_accessor :type
   has_secure_password
+  belongs_to :fan
+  belongs_to :band
 
 
   def self.authenticate!(email, password)

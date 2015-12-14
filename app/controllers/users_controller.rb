@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def new
-
+    @user = User.new
   end
 
 
@@ -24,15 +24,14 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    if @user.band?
-      band = Band.new
+    if @user.type == "Band"
+      band = Band.new(band_params)
       band.user = @user
-      # ..
       band.save
-    else @user.fan
+    elsif @user.type == "Fan"
+      fan = Fan.new(fan_params)
       fan.user = @user
       fan.save
-      render json: @user.errors, status: :unprocessable_entity
     end
     render json: @user, status: :created
   end
@@ -62,5 +61,13 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:email, :password)
+    end
+
+    def band_params
+      params.require(:user).permit(:name, :genre, :location)
+    end
+
+    def fan_params
+      params.require(:user).permit(:location)
     end
 end
