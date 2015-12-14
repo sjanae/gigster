@@ -18,22 +18,17 @@ class ConcertsController < ApplicationController
   end
 
   def edit
-<<<<<<< HEAD
 
-=======
->>>>>>> d750d9b068de44787ae01bff4e6856a5a8082ea1
   end
 
 
   def create
-    @concert = current_user.concerts.build(concert_params)
-    respond_to do |format|
+    @concert = current_user.concert.build(concert_params)
       if @concert.save
         render json: @concert, status: :created, location: @concert
       else
         render json: @concert.errors, status: :unprocessable_entity
       end
-    end
   end
 
 

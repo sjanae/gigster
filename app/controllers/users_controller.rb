@@ -8,11 +8,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    
+
   end
 
   def new
-    
+
   end
 
 
@@ -24,16 +24,23 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    if @user.save
-      render json: @user, status: :created
-    else
+    # if @user.band?
+    #   band = Band.new
+    #   band.user = @user
+    #   # ..
+    #   band.save
+    # else @user.fan
+    #   fan.save
+    # end
+  elsif
       render json: @user.errors, status: :unprocessable_entity
     end
+    render json: @user, status: :created
   end
 
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     if @user.update(user_params)
     render json: @user, status: :success
     else
@@ -55,6 +62,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :type)
+      params.require(:user).permit(:email, :password)
     end
 end

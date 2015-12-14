@@ -1,4 +1,4 @@
-class BandsController < UsersController
+class BandsController < ApplicationController
   before_action :authenticate_user!, only: [:update, :destroy]
 
   def index
@@ -33,6 +33,6 @@ class BandsController < UsersController
   end
 
   def band_params
-    params.require(:band).permit(:email, :password, :name, :genre, :location)
+    params.require(:band).permit(:name, :genre, :location)
   end
 end

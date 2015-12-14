@@ -1,5 +1,5 @@
-class Fan < User
+class Fan < ActiveRecord::Base
   has_many :pledges
-  validates :email, :location, :type, presence: true
-  
+  validates :email, :location, presence: true
+
   end

@@ -1,4 +1,4 @@
-class FansController < UsersController
+class FansController < ApplicationController
   before_action :authenticate_user!, only: [:update, :destroy]
 
   def index
@@ -33,6 +33,6 @@ class FansController < UsersController
   end
 
   def fan_params
-    params.require(:fan).permit(:email, :password, :location)
+    params.require(:fan).permit(:location)
   end
 end
