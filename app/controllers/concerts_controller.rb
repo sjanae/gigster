@@ -1,6 +1,6 @@
 class ConcertsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_concert, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show] # guest can view the index and show actions(page)
+  before_action :set_concert, only: [:show, :edit, :update, :destroy] # concert actions based on concert id on current page
 
 
   def index
@@ -13,11 +13,11 @@ class ConcertsController < ApplicationController
   end
 
   def show
-    render json: @concert
+    # render json: @concert
+    @pledges = @concert.pledges
   end
 
   def edit
-    
   end
 
 
@@ -37,7 +37,7 @@ class ConcertsController < ApplicationController
     respond_to do |format|
 
     if @concert.update(concert_params)
-      render json: @concert, status: :created, location: @concert
+      render :show, status: :created, location: @concert
     else
       render json: @concert.errors, status: :unprocessable_entity
       end
