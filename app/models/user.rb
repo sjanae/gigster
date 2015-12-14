@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :concerts
   belongs_to :band
-  belongs_to :Fan
+  belongs_to :fan
   attr_accessor :type
 
 
