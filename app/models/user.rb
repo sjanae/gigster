@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :concerts
   belongs_to :band
-  belongs_to :fan
+  belongs_to :Fan
+  attr_accessor :type
 
 
   def self.authenticate!(email, password)

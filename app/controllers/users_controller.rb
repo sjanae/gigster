@@ -24,11 +24,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    if user_params.type == "Band"
+    if @user.type == "Band"
       band = Band.new(band_params)
       band.user = @user
       band.save
-    elsif user_params.type == "Fan"
+    elsif @user.type == "Fan"
       fan = Fan.new(fan_params)
       fan.user = @user
       fan.save
