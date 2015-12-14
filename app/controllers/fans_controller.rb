@@ -14,7 +14,7 @@ class FansController < ApplicationController
   def update
     @fan = Fan.find(params[:id])
     if @fan.update(user_params)
-    render json: @fan, status: :success
+      render json: @fan, status: :success
     else
       render json: @fan.errors, status: :unprocessable_entity
     end

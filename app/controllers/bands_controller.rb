@@ -14,7 +14,7 @@ class BandsController < ApplicationController
   def update
     @band = Band.find(params[:id])
     if @band.update(user_params)
-    render json: @band, status: :success
+      render json: @band, status: :success
     else
       render json: @band.errors, status: :unprocessable_entity
     end
