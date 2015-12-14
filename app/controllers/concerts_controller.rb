@@ -17,7 +17,7 @@ class ConcertsController < ApplicationController
   end
 
   def edit
-    
+
   end
 
 

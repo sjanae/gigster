@@ -1,8 +1,7 @@
 FactoryGirl.define do
   factory :pledge do
-    user_id "MyString"
-concert_id "MyString"
-price "9.99"
+    user_id { Faker::Name.name }
+    concert_id { Faker::Name.name }
+    price { Faker::Name.name }
   end
-
 end
