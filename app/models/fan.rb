@@ -1,6 +1,5 @@
 class Fan < User
-	has_many :pledges
-
+  has_many :pledges
   validates :email, :location, :type, presence: true
   
-end
+  end

@@ -18,6 +18,10 @@ class ConcertsController < ApplicationController
   end
 
   def edit
+<<<<<<< HEAD
+
+=======
+>>>>>>> d750d9b068de44787ae01bff4e6856a5a8082ea1
   end
 
 
