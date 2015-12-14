@@ -63,6 +63,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, :password, :type)
   end
 
+
   def band_params
     params.require(:user).permit(:name, :genre, :location)
   end

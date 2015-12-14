@@ -13,6 +13,8 @@ class ConcertsController < ApplicationController
   end
 
   def show
+    @concert = Concert.find(params[:id])
+    render json: @concert
     # render json: @concert
     @pledges = @concert.pledges
   end
