@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-   render json: @users
+    render json: @users
   end
 
   def edit
@@ -24,15 +24,14 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    # if @user.band?
-    #   band = Band.new
-    #   band.user = @user
-    #   # ..
-    #   band.save
-    # else @user.fan
-    #   fan.save
-    # end
-  elsif
+    if @user.band?
+      band = Band.new
+      band.user = @user
+      # ..
+      band.save
+    else @user.fan
+      fan.user = @user
+      fan.save
       render json: @user.errors, status: :unprocessable_entity
     end
     render json: @user, status: :created
