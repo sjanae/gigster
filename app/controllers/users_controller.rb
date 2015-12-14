@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def edit
 
   end
-  
+
   def new
     @user = User.new
   end
@@ -24,11 +24,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    if @user.type == "Band"
+    if user_params.type == "Band"
       band = Band.new(band_params)
       band.user = @user
       band.save
-    elsif @user.type == "Fan"
+    elsif user_params.type == "Fan"
       fan = Fan.new(fan_params)
       fan.user = @user
       fan.save
@@ -60,7 +60,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:email, :password, :type)
   end
 
   def band_params
