@@ -23,7 +23,8 @@ class ConcertsController < ApplicationController
 
 
   def create
-    @concert = current_user.concert.build(concert_params)
+
+    @concert = current_user.band.concerts.create(concert_params)
       if @concert.save
         render json: @concert, status: :created, location: @concert
       else
@@ -56,6 +57,6 @@ class ConcertsController < ApplicationController
     end
 
     def concert_params
-      params.require(:concert).permit(:location, :venue, :success)
+      params.require(:concert).permit(:band_id, :location, :venue, :success)
     end
 end
