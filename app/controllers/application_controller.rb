@@ -6,7 +6,7 @@ class ApplicationController < ActionController::API
 
   rescue_from UnauthenticatedError, with: :unauthenticated
   rescue_from UnauthorizedError, with: :unauthorized
-
+  
   def unauthenticated(error)
     head :unauthorized
   end

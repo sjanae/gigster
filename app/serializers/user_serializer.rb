@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :email, :genre, :location, :type_of_user
+  attributes :id, :email, :location, :type_of_user, :band_id
 
   def genre
     object.band.genre if object.band

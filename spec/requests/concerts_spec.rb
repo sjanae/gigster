@@ -31,9 +31,10 @@ RSpec.describe "Concerts" do
 
   describe "create" do
     let(:concert3) { FactoryGirl.attributes_for(:concert)}
+     let(:band)  { FactoryGirl.create :band }
 
     it "creates a concert" do
-      token = FactoryGirl.create(:access_token)
+      token = FactoryGirl.create(:access_token, resource_owner_id: band.id)
       post concerts_path, {concert: concert3}, { 'authorization' => "Bearer #{token.token}"}
       expect(response).to have_http_status(:success)
     end
