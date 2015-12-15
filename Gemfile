@@ -3,6 +3,7 @@ ruby '2.2.3'
 
 gem 'activerecord'
 gem "acts_as_follower"
+gem 'acts_as_votable'
 gem 'active_model_serializers', '~> 0.10.0.rc3'
 gem 'bcrypt'
 gem 'doorkeeper'
