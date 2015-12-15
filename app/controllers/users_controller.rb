@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
 
   def index
-    @users = current_user
+    @users = Users.all
     render json: @users
   end
 
@@ -15,6 +15,9 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def me
+    respond_with current_resource_owner
+  end
 
   def show
     @user = User.find(params[:id])
