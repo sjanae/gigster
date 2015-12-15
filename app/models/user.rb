@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :concerts
   belongs_to :band
   belongs_to :fan
+  has_many :concerts, through: :pledges
   attr_accessor :type
 
 

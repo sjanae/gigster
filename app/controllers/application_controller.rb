@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::API
-  include Pundit
   # protect_from_forgery with: :exception
 
   UnauthenticatedError     = Class.new(ActionController::ActionControllerError)
@@ -19,6 +18,9 @@ class ApplicationController < ActionController::API
   def authenticate_user!
     raise UnauthenticatedError unless current_user
   end
+
+
+  private
 
   def current_user
     User.find(doorkeeper_token.resource_owner_id) if doorkeeper_token
