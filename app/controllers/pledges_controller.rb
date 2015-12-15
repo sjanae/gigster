@@ -1,7 +1,7 @@
 class PledgesController < ApplicationController
-  before_action :set_pledge
   before_action :authenticate_user!
-  before_action :set_concert # attach pledge to the concert by concert_id before any actions
+  before_action :set_concert
+  before_action :set_pledge
 
   def new
     @pledge = @concert.pledges.build
@@ -13,12 +13,11 @@ class PledgesController < ApplicationController
   end
 
   def update
-      if @pledge.update(pledge_params)
-        render :show, status: :created, location: @pledge
-      else
-        # render :edit
-        render json: @pledge.errors, status: :unprocessable_entity
-      end
+    if @pledge.update(pledge_params)
+      render :show, status: :created, location: @pledge
+    else
+      # render :edit
+      render json: @pledge.errors, status: :unprocessable_entity
     end
   end
 
@@ -36,9 +35,9 @@ class PledgesController < ApplicationController
 
   def show
     @pledge = Pledge.find(params[:id])
-    render json: @pledge
     # render json: @pledge
-    # render json: @concert.pledges
+    # render json: @pledge
+    render json: @concert.pledges
   end
 
 
@@ -61,4 +60,4 @@ class PledgesController < ApplicationController
       params.require(:pledge).permit(:price)
     end
 
-
+end
