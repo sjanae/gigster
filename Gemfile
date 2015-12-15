@@ -11,7 +11,6 @@ gem 'kaminari'
 gem 'materialize-sass'
 gem 'material_icons'
 gem 'rack-cors', require: 'rack/cors'
-gem 'rails_12factor'
 gem 'rails-api'
 gem 'pg'
 gem 'puma'
@@ -25,6 +24,10 @@ group :development do
   gem 'rails-erd'
   gem "spring"
   gem 'spring-commands-rspec'
+end
+
+group :production do
+  gem 'rails_12factor'
 end
 
 group :test, :development do

@@ -2,7 +2,7 @@ class BandsController < ApplicationController
   before_action :authenticate_user!, only: [:update, :destroy]
 
   def index
-    @bands = Band.all
+    @bands = Band.where(public: true)
     render json: @bands
   end
 
@@ -35,6 +35,6 @@ end
   end
 
   def band_params
-    params.require(:band).permit(:name, :genre, :location, :audio_url, :video_url)
+    params.require(:band).permit(:name, :genre, :location, :audio_url, :video_url, :public)
   end
 end

@@ -3,8 +3,8 @@ class UsersController < ApplicationController
 
 
   def index
-    @users = Users.all
-    render json: @users
+    @users = User.all
+    render json: @users, status: :ok
   end
 
   def edit
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def me
-    respond_with current_resource_owner
+    render json: current_user
   end
 
   def show
