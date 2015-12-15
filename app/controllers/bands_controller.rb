@@ -12,19 +12,21 @@ class BandsController < ApplicationController
   end
 
   def update
-    @band = Band.find(params[:id])
-    if @band.update(user_params)
-      render json: @band, status: :success
+    @band = current_user.band
+    if @band.update(band_params)
+      render json: @band, status: :ok
     else
-      render json: @band.errors, status: :unprocessable_entity
+      render json: @band.errors, status: :unauthorized
     end
   end
 
   def destroy
-    @band = Band.find(params[:id])
-    @band.destroy
-    render head :no_content
+    @band = current_user.band
+    if @band.destroy
+  else
+    render json: @band.errors, status: :unauthorized
   end
+end
 
   private
 

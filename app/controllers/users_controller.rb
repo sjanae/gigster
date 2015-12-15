@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
 
   def index
-    @users = User.all
+    @users = current_user
     render json: @users
   end
 
@@ -20,7 +20,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     render json: @user
   end
-
 
   def create
     @user = User.create(user_params)
@@ -45,7 +44,6 @@ class UsersController < ApplicationController
       render json: @user.errors, status: :unprocessable_entity
     end
   end
-
 
   def destroy
     @user = User.find(params[:id])

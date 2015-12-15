@@ -12,19 +12,21 @@ class FansController < ApplicationController
   end
 
   def update
-    @fan = Fan.find(params[:id])
-    if @fan.update(user_params)
-      render json: @fan, status: :success
+    @fan = current_user.fan
+    if @fan.update(fan_params)
+      render json: @fan, status: :ok
     else
-      render json: @fan.errors, status: :unprocessable_entity
+      render json: @fan.errors, status: :unauthorized
     end
   end
 
   def destroy
-    @fan = Fan.find(params[:id])
-    @fan.destroy
-    render json: @fan, status: :success
+    @fan = current_user.fan
+    if @fan.destroy
+  else
+    render json: @fan.errors, status: :unauthorized
   end
+end
 
   private
 
