@@ -1,7 +1,7 @@
 class PledgesController < ApplicationController
-  before_action :set_pledge, except: [:new, :create] #new and create action won't have a pledge to set from database
   before_action :authenticate_user!
-  before_action :set_concert # attach pledge to the concert by concert_id before any actions
+  before_action :set_concert
+  before_action :set_pledge
 
   def new
     @pledge = @concert.pledges.build
@@ -13,45 +13,47 @@ class PledgesController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @pledge.update(pledge_params)
-        redirect_to @concert
-      else
-        render :edit
-      end
+    if @pledge.update(pledge_params)
+      render :show, status: :created, location: @pledge
+    else
+      # render :edit
+      render json: @pledge.errors, status: :unprocessable_entity
     end
   end
 
   def create
-    @pledge = @concert.pledges.build(pledge_params)
-    respond_to do |format|
+    @pledge = current_user.fan.pledges.create(pledge_params)
+    # @concert.pledges.build(pledge_params)
     if @pledge.save
       render json: @pledge, status: :created, location: @pledge
     else
-      render :new
-      end
+      # render :new
+      render json: @pledge.errors, status: :unprocessable_entity
+    
     end
   end
 
   def show
-    render json: @pledge
+    @pledge = Pledge.find(params[:id])
+    # render json: @pledge
+    # render json: @pledge
+    render json: @concert.pledges
   end
 
 
   def destroy
     @pledge.destroy
-
     head :no_content
   end
 
   private
     
     def set_concert
-      @concert = Concert.find(params[:concert_id]) # concert/concert_id/pledges
+      @concert = Concert.find(params[:concert_id])
     end
 
     def set_pledge
-      @pledge = @concert.pledges.find(params[:id]) # to find pledges id already in the database use rake routes locator
+      @pledge = @concert.pledge.find(params[:id])
     end
 
     def pledge_params

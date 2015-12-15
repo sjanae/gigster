@@ -8,14 +8,7 @@ Rails.application.routes.draw do
 
 
   resources :concerts do
-    resources :pledges, only: [:new, :create, :update, :destroy]
+    resources :pledges
   end
 
 end
-
-
-# nested routes = http..something.com/concerts/concert_id(number)/pledges
-
-
-# something.com/fans/1/pledges
-# something.com/bands/1/concerts

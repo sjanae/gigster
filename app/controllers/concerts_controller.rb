@@ -15,7 +15,6 @@ class ConcertsController < ApplicationController
   def show
     @concert = Concert.find(params[:id])
     render json: @concert
-    # render json: @concert
     @pledges = @concert.pledges
   end
 
@@ -32,11 +31,10 @@ class ConcertsController < ApplicationController
       else
         render json: @concert.errors, status: :unprocessable_entity
       end
-  end
+  
 
 
   def update
-    respond_to do |format|
 
     if @concert.update(concert_params)
       render :show, status: :created, location: @concert
@@ -61,4 +59,5 @@ class ConcertsController < ApplicationController
     def concert_params
       params.require(:concert).permit(:band_id, :location, :venue, :success)
     end
-end
+
+  end
