@@ -23,7 +23,7 @@ class FansController < ApplicationController
   def destroy
     @fan = Fan.find(params[:id])
     @fan.destroy
-    render json: @fan, status: :success
+    render head :no_content
   end
 
   private
