@@ -9,7 +9,11 @@ Rails.application.routes.draw do
 
 
   resources :concerts do
-    resources :pledges
+    # resources :pledges
+    member do
+      put '/upvote', to: "concerts#upvote"
+      delete '/delete_vote', to: "concerts#delete_vote"
   end
+end
 
 end
