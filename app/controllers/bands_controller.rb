@@ -32,7 +32,7 @@ end
   private
 
   def set_band
-    @band = Band.find(current_user.band_id)
+    @band = Band.find(params[:id])
   end
 
   def band_params
