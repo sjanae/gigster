@@ -1,8 +1,8 @@
-STEP 1:
-  Register A User:
-  URL: ```https://gigster-app.herokuapp.com/users ```
-  	Method: POST
-  	JSON:
+## STEP 1:
+### Register A User:
+#### URL: ```https://gigster-app.herokuapp.com/users ```
+#### Method: POST
+#### JSON:
   {
     "user": {
         "email": " ",
@@ -12,27 +12,28 @@ STEP 1:
 }
 
 
- STEP 2:
-   Login A User
-  URL: ```https://gigster-app.herokuapp.com/oauth/authorize```
-  METHOD: POST
-  JSON:
+## STEP 2:
+#### Login A User
+#### URL: ```https://gigster-app.herokuapp.com/oauth/authorize```
+#### METHOD: POST
+#### JSON:
   {
       "grant_type": "password",
           "username": "User14",
           "password": "test"
   }
 
-This will return an access token that needs to be added to the header of the website with an 
+This will return an access token that needs to be added to the header of the website with an
 “Authorization” of “Bearer tokenyoureceived “
 
 
 
-TO SHOW A CURRENT USER:
-  MUST HAVE ACCESS TOKEN IN ORDER TO SHOW CURRENT USER
+##### TO SHOW A CURRENT USER:
+###### MUST HAVE ACCESS TOKEN IN ORDER TO SHOW CURRENT USER
 
- URL: ``` https://gigster-app.herokuapp.com/me```
- JSON: 
+#### URL: ``` https://gigster-app.herokuapp.com/me```
+#### HEADERS: “Authorization”: “Bearer tokenyoureceived “
+JSON:
  {
   "id": ,
   "email": " ",
@@ -41,15 +42,16 @@ TO SHOW A CURRENT USER:
   "band_id":  
 }
 
- THIS WILL RETURN CURRENT USER INFORMATION ONLY IF YOU HAVE AN AUTHORIZED TOKEN
+##### THIS WILL RETURN CURRENT USER INFORMATION ONLY IF YOU HAVE AN AUTHORIZED TOKEN
 
 
 
 
- To show a single band:
-    URL: ``` https://gigster-app.herokuapp.com/bands/id```
-     METHOD: GET
-     Params:
+### To show a single band:
+####URL: ``` https://gigster-app.herokuapp.com/bands/id```
+#### HEADERS: “Authorization”: “Bearer tokenyoureceived “
+#### METHOD: GET
+Params:
       "id": 7,
       "name": null,
       "location": null,
@@ -59,20 +61,22 @@ TO SHOW A CURRENT USER:
       "audio_url": null
 
 
-   To show a single fan:
-   URL: ``` https://gigster-app.herokuapp.com/fans/id```
-   METHOD: GET
-   Params:
+### To show a single fan:
+#### URL: ``` https://gigster-app.herokuapp.com/fans/id```
+#### HEADERS: “Authorization”: “Bearer tokenyoureceived “
+#### METHOD: GET
+Params:
 
        "id": 1,
        "location": "Nashville"
 
 
 
-* To Show All Users:
- URL: ``` https://gigster-app.herokuapp.com/users ```
- METHOD: GET
- Params:
+### To Show All Users:
+#### URL: ``` https://gigster-app.herokuapp.com/users ```
+#### HEADERS: “Authorization”: “Bearer tokenyoureceived “
+#### METHOD: GET
+Params:
     "id": 7,
     "email": "backpack@orange.com",
     "location": "Burbank",
@@ -80,10 +84,11 @@ TO SHOW A CURRENT USER:
     "band_id": null
 
 
-* To Update a band
- URL ``` https://gigster-app.herokuapp.com/me/band ```
- METHOD: PUT
- JSON:
+### To Update a band
+#### URL ``` https://gigster-app.herokuapp.com/me/band ```
+#### HEADERS: “Authorization”: “Bearer tokenyoureceived “
+#### METHOD: PUT
+JSON:
  {
     "band": {
       "id": 7,
@@ -99,9 +104,10 @@ TO SHOW A CURRENT USER:
 
 -or-
 
-URL: ``` https://gigster-app.herokuapp.com/bands/id```
-   METHOD: PUT
-   Params:
+#### URL: ``` https://gigster-app.herokuapp.com/bands/id```
+#### HEADERS: “Authorization”: “Bearer tokenyoureceived “
+#### METHOD: PUT
+Params:
     "id": 7,
     "name": null,
     "location": null,
@@ -111,19 +117,20 @@ URL: ``` https://gigster-app.herokuapp.com/bands/id```
     "audio_url": null
     "public": true
 
-  *  PUBLIC HAS TO BE SET TO TRUE IN ORDER FOR A BAND TO BE SHOWN ON THE INDEX (SHOW ALL BANDS) PAGE
+#### PUBLIC HAS TO BE SET TO TRUE IN ORDER FOR A BAND TO BE SHOWN ON THE INDEX (SHOW ALL BANDS) PAGE
 
 
-* To show all bands
- URL: ``` https://gigster-app.herokuapp.com/bands ```
- METHOD: GET
-  -this will return a list of bands that have their profile updated to public being true
+### To show all bands
+#### URL: ``` https://gigster-app.herokuapp.com/bands ```
+#### METHOD: GET
+  - this will return a list of bands that have their profile updated to public being true
 
 
-* To have a fan update their profile:
- URL: ``` https://gigster-app.herokuapp.com/fans/id```
- METHOD: PUT
- Params:
+### To have a fan update their profile:
+#### URL: ``` https://gigster-app.herokuapp.com/fans/id```
+#### HEADERS: “Authorization”: “Bearer tokenyoureceived “
+#### METHOD: PUT
+Params:
  {
     "fan": {
       "id": 1,
@@ -132,27 +139,29 @@ URL: ``` https://gigster-app.herokuapp.com/bands/id```
 }
 
 
-* To show all fans:
- URL: ```https://gigster-app.herokuapp.com/fans ```
- METHOD: GET
+### To show all fans:
+#### URL: ```https://gigster-app.herokuapp.com/fans ```
+#### METHOD: GET
 
 
 
- * To delete a band:
- URL: ``` https://gigster-app.herokuapp.com/bands/id```
- METHOD: DELETE
+### To delete a band:
+#### URL: ``` https://gigster-app.herokuapp.com/bands/id```
+#### HEADERS: “Authorization”: “Bearer tokenyoureceived “
+#### METHOD: DELETE
 
 
- * To delete a fan:
- URL: ``` https://gigster-app.herokuapp.com/fans/id```
- METHOD: DELETE
+### To delete a fan:
+#### URL: ``` https://gigster-app.herokuapp.com/fans/id```
+#### HEADERS: “Authorization”: “Bearer tokenyoureceived “
+#### METHOD: DELETE
 
 
 
- * To show all concerts:
-  URL: ``` https://gigster-app.herokuapp.com/concerts ```
-  METHOD: GET
-  Params:
+### To show all concerts:
+#### URL: ``` https://gigster-app.herokuapp.com/concerts ```
+#### METHOD: GET
+Params:
   [
     {
     "id": 1,
@@ -163,10 +172,11 @@ URL: ``` https://gigster-app.herokuapp.com/bands/id```
     }
 ]
 
-  * In order to create a concert, the authorized token must belong to a band
-   URL: ``` https://gigster-app.herokuapp.com/concerts  ```
-   METHOD: POST
-   JSON:
+### In order to create a concert, the authorized token must belong to a band
+#### URL: ``` https://gigster-app.herokuapp.com/concerts  ```
+#### HEADERS: “Authorization”: “Bearer tokenyoureceived “
+#### METHOD: POST
+JSON:
    {
     "concert": {
         "location": "Nashville",
@@ -174,15 +184,18 @@ URL: ``` https://gigster-app.herokuapp.com/bands/id```
     }
 }
 
-* To Update a concert:
-  URL: ``` https://gigster-app.herokuapp.com/concerts/:id  ```
-  METHOD: PUT
+### To Update a concert:
+#### URL: ``` https://gigster-app.herokuapp.com/concerts/:id  ```
+#### HEADERS: “Authorization”: “Bearer tokenyoureceived “
+#### METHOD: PUT
 
 
-* To create a vote, the authorized token must belong to a fan
- URL: ``` https://gigster-app.herokuapp.com/concerts/:id/vote ```
- METHOD: PUT
+### To create a vote, the authorized token must belong to a fan
+#### URL: ``` https://gigster-app.herokuapp.com/concerts/:id/vote ```
+#### HEADERS: “Authorization”: “Bearer tokenyoureceived “
+#### METHOD: PUT
 
-* To unvote from a concert
- URL: ``` https://gigster-app.herokuapp.com/concerts/:id/unvote ```
- METHOD: DELETE
+### To unvote from a concert
+#### URL: ``` https://gigster-app.herokuapp.com/concerts/:id/unvote ```
+#### HEADERS: “Authorization”: “Bearer tokenyoureceived “
+#### METHOD: DELETE
