@@ -36,6 +36,6 @@ end
   end
 
   def band_params
-    params.require(:band).permit(:name, :genre, :location, :audio_url, :video_url, :public)
+    params.require(:band).permit(:name, :genre, :location, :audio_url, :video_url, :public, :avatar_url)
   end
 end
