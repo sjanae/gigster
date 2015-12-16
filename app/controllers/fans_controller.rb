@@ -11,14 +11,14 @@
        render json: @fan
      end
 
-     def update
-       @fan = current_user.fan
-       if @fan.update(fan_params)
-         render json: @fan, status: :ok
-       else
-         render json: @fan.errors, status: :unauthorized
-       end
-     end
+    def update
+      @fan = Fan.find(current_user.fan_id)
+      if @fan.update(fan_params)
+        render json: @fan, status: :ok
+      else
+        render json: @fan.errors, status: :unprocessable_entity
+      end
+    end
 
      def destroy
        @fan = current_user.fan
