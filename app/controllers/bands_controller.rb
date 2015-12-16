@@ -13,7 +13,7 @@ class BandsController < ApplicationController
   end
 
   def update
-    @band = current_user.band
+    @band = Band.find current_user.band_id
     if @band.update(band_params)
       render json: @band, status: :ok
     else
