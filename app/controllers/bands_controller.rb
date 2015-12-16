@@ -1,6 +1,6 @@
 class BandsController < ApplicationController
   before_action :authenticate_user!, only: [:update, :destroy]
-  before_action :set_band, only: [:show, :edit, :update, :destroy]
+  before_action :set_band, only: [:show, :edit, :destroy]
 
 
   def index
@@ -13,11 +13,11 @@ class BandsController < ApplicationController
   end
 
   def update
-    @band = Band.find current_user.band_id
-    if @band.update(band_params)
-      render json: @band, status: :ok
+    band = Band.find(current_user.band_id)
+    if band.update(band_params)
+      head :no_content
     else
-      render json: @band.errors, status: :unauthorized
+      render json: band.errors, status: :unprocessable_entity
     end
   end
 
