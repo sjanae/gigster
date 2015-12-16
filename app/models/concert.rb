@@ -1,7 +1,10 @@
 class Concert < ActiveRecord::Base
+  acts_as_votable
   has_and_belongs_to_many :bands
   has_many :pledges
-  acts_as_votable
+  validates_uniqueness_of :voter_id
+  # validates_presence_of :location
+  # validates_presence_of :venue
 
   validates_presence_of :location
   validates_presence_of :venue
@@ -17,7 +20,5 @@ class Concert < ActiveRecord::Base
       return true
     end
   end
-
-
 
 end
