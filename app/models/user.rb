@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   belongs_to :fan
   has_many :concerts, through: :pledges
   attr_accessor :type
+  acts_as_voter
 
 
   def self.authenticate!(email, password)

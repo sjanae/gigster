@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   resources :concerts do
     # resources :pledges
     member do
-      put '/upvote', to: "concerts#upvote"
-      delete '/delete_vote', to: "concerts#delete_vote"
+      put '/vote', to: "concerts#vote"
+      delete '/unvote', to: "concerts#unvote"
     end
   end
 end

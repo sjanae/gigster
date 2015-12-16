@@ -173,7 +173,7 @@ DEPENDENCIES
   active_model_serializers (~> 0.10.0.rc3)
   activerecord
   acts_as_follower
-  acts_as_votable
+  acts_as_votable (~> 0.10.0)
   bcrypt
   codeclimate-test-reporter
   database_cleaner
