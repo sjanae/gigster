@@ -1,8 +1,8 @@
 STEP 1:
- * Register A User:
-  - URL: ```https://gigster-app.herokuapp.com/users ```
-  Method: PUT
-  JSON:
+  Register A User:
+  URL: ```https://gigster-app.herokuapp.com/users ```
+  	Method: POST
+  	JSON:
   {
     "user": {
         "email": " ",
@@ -11,8 +11,9 @@ STEP 1:
     }
 }
 
+
  STEP 2:
-  * Login A User
+   Login A User
   URL: ```https://gigster-app.herokuapp.com/oauth/authorize```
   METHOD: POST
   JSON:
@@ -22,28 +23,40 @@ STEP 1:
           "password": "test"
   }
 
-* To show a single user currently logged in:
- MUST HAVE ACCESS TOKEN IN ORDER TO SHOW CURRENT USER
+This will return an access token that needs to be added to the header of the website with an 
+“Authorization” of “Bearer tokenyoureceived “
+
+
+
+TO SHOW A CURRENT USER:
+  MUST HAVE ACCESS TOKEN IN ORDER TO SHOW CURRENT USER
 
  URL: ``` https://gigster-app.herokuapp.com/me```
- THIS WILL RETURN CURRENT USER INFORMATION IF YOU HAVE A TOKEN
+ JSON: 
+ {
+  "id": ,
+  "email": " ",
+  "location":  ,
+  "type_of_user": " ",
+  "band_id":  
+}
+
+ THIS WILL RETURN CURRENT USER INFORMATION ONLY IF YOU HAVE AN AUTHORIZED TOKEN
 
 
-
- -or-
 
 
  To show a single band:
-  URL: ``` https://gigster-app.herokuapp.com/bands/id```
-   METHOD: GET
-   Params:
-    "id": 7,
-    "name": null,
-    "location": null,
-    "avatar_url": null,
-    "genre": null,
-    "video_url": null,
-    "audio_url": null
+    URL: ``` https://gigster-app.herokuapp.com/bands/id```
+     METHOD: GET
+     Params:
+      "id": 7,
+      "name": null,
+      "location": null,
+      "avatar_url": null,
+      "genre": null,
+      "video_url": null,
+      "audio_url": null
 
 
    To show a single fan:
