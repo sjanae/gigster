@@ -15,7 +15,7 @@ class ConcertsController < ApplicationController
   def show
     @concert = Concert.find(params[:id])
     render json: @concert
-    @pledges = @concert.pledges
+    @vote = @concert.votes_for.size
   end
 
   def edit
@@ -32,8 +32,6 @@ class ConcertsController < ApplicationController
         render json: @concert.errors, status: :unprocessable_entity
       end
   
-
-
   def update
 
     if @concert.update(concert_params)
@@ -49,6 +47,17 @@ class ConcertsController < ApplicationController
     @concert.destroy
     head :no_content
   end
+
+
+  def upvote
+    @concert.liked_by current_user
+  end
+
+  def delete_vote
+    @concert.unliked_by current_user
+  end
+
+
 
   private
 

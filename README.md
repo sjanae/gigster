@@ -63,3 +63,12 @@ PAYLOAD: {
   For A Fan To View Their Profile:
   URL: ``` /fans/id ```
   METHOD: POST
+
+  * CONCERTS PAYLOAD: {
+  location
+  venue
+}
+
+To Show A List of Concerts:
+  URL: ``` /concerts ```
+  METHOD: GET
