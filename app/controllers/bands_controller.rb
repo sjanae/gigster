@@ -1,5 +1,7 @@
 class BandsController < ApplicationController
   before_action :authenticate_user!, only: [:update, :destroy]
+  before_action :set_band, only: [:show, :edit, :update, :destroy]
+
 
   def index
     @bands = Band.where(public: true)
@@ -7,7 +9,6 @@ class BandsController < ApplicationController
   end
 
   def show
-    @band = Band.find(params[:id])
     render json: @band
   end
 
