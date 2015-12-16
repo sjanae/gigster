@@ -49,12 +49,12 @@ class ConcertsController < ApplicationController
   end
 
 
-  def upvote
-    @concert.liked_by current_user
+  def vote
+    @concert.vote_by current_user
   end
 
-  def delete_vote
-    @concert.unliked_by current_user
+  def unvote
+    @concert.unvote_by current_user
   end
 
 
