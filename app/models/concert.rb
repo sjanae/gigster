@@ -6,16 +6,17 @@ class Concert < ActiveRecord::Base
   validates_presence_of :location
   validates_presence_of :venue
 
-def score
-  self.votes_for.size
-end
+  def score
+    self.votes_for.size
+  end
 
-def success?
-  if @concert.votes_for.size < 10
-    return false
-  else
-    return true
-end
+  def success?
+    if @concert.votes_for.size < 10
+      return false
+    else
+      return true
+    end
+  end
 
 
 
