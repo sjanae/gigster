@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :bands
   get '/me', to: 'users#me'
   put '/me/band', to: 'bands#update'
+  # get '/me/band', to: 'bands#show'
 
   resources :concerts do
     # resources :pledges
