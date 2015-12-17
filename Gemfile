@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.2.3'
 
-gem 'activerecord'
+gem 'rails', '~> 4.2.4'
 gem "acts_as_follower"
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'active_model_serializers', '~> 0.10.0.rc3'
