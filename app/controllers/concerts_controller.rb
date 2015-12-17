@@ -15,8 +15,6 @@ class ConcertsController < ApplicationController
 
   def show
     render json: @concert
-    @vote = @concert.votes_for.size
-    render json: @vote
   end
 
   def edit
