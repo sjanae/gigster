@@ -1,3 +1,5 @@
 class PledgeSerializer < ActiveModel::Serializer
-  attributes :id, :concert_id, :price
+  attributes :id, :concert_id, :count
+
+
 end
