@@ -89,9 +89,6 @@ GEM
     rack-cors (0.4.0)
     rack-test (0.6.3)
       rack (>= 1.0)
-    rails-api (0.4.0)
-      actionpack (>= 3.2.11)
-      railties (>= 3.2.11)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.7)
@@ -190,7 +187,6 @@ DEPENDENCIES
   puma
   pundit
   rack-cors
-  rails-api
   rails-erd
   rails_12factor
   rspec-rails
