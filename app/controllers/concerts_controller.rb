@@ -1,6 +1,6 @@
 class ConcertsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show] # guest can view the index and show actions(page)
-  before_action :set_concert, only: [:show, :edit, :update, :destroy, :vote, :unvote] # concert actions based on concert id on current page
+  before_action :set_concert, only: [:show, :edit, :update, :destroy, :pledge, :unpledge] # concert actions based on concert id on current page
     
 
 
@@ -49,15 +49,16 @@ class ConcertsController < ApplicationController
   end
 
 
-  def vote
+  def pledge
     @concert.upvote_by current_user
     redirect_to :back
   end
 
-  def unvote
+  def unpledge
     @concert.downvote_by current_user
     redirect_to :back
   end
+
 
 
 

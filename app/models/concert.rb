@@ -1,20 +1,17 @@
 class Concert < ActiveRecord::Base
   acts_as_votable
   has_and_belongs_to_many :bands
-  # has_many :pledges
-  validates_uniqueness_of :voter_id
-  # validates_presence_of :location
-  # validates_presence_of :venue
+  # validates_uniqueness_of :voter_id
 
-  def score
+  def pledge
     votes_for.size
   end
 
-  def success?
-    if votes_for.size < 10
-      return false
+  def status
+    if votes_for.size < 1
+      return "We need more pledges!"
     else
-      return true
+      return "This concert is DEFINITELY a thing!"
     end
   end
 
