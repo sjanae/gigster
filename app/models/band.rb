@@ -5,7 +5,7 @@ class Band < ActiveRecord::Base
   validates_uniqueness_of :voter_id
   # validates :name, :location, :video_url, :audio_url, presence: true
 
-  def fan
+  def fanship
     get_likes.size
   end
 

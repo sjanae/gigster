@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   resources :fans
   resources :bands do
     member do
-      put '/fan', to: 'bands#fan'
-      delete '/unfan', to: 'bands#fan'
+      put '/fanship', to: 'bands#fanship'
+      delete '/unfanship', to: 'bands#fanship'
     end
   end
   get '/me', to: 'users#me'

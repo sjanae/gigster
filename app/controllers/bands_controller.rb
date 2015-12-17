@@ -29,12 +29,12 @@ class BandsController < ApplicationController
   end
 end
 
-  def fan
+  def fanship
     @band.liked_by current_user
     redirect_to :back
   end
 
-  def unfan
+  def unfanship
     @band.unliked_by current_user
     redirect_to :back
   end
