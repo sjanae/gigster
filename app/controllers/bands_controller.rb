@@ -24,16 +24,16 @@ class BandsController < ApplicationController
   def destroy
     @band = current_user.band
     if @band.destroy
-  else
-    render json: @band.errors, status: :unauthorized
+    else
+      render json: @band.errors, status: :unauthorized
+    end
   end
-end
 
   def fanship
     @band.liked_by current_user
     redirect_to :back
   end
-
+  
   def unfanship
     @band.unliked_by current_user
     redirect_to :back
