@@ -29,6 +29,16 @@ class BandsController < ApplicationController
   end
 end
 
+  def fan
+    @band.liked_by current_user
+    redirect_to :back
+  end
+
+  def unfan
+    @band.unliked_by current_user
+    redirect_to :back
+  end
+
   private
 
   def set_band

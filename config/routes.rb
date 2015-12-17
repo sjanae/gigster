@@ -3,7 +3,12 @@ Rails.application.routes.draw do
 
   resources :users, except: [:new, :edit]
   resources :fans
-  resources :bands
+  resources :bands do
+    member do
+      put '/fan', to: 'bands#fan'
+      delete '/unfan', to: 'bands#fan'
+    end
+  end
   get '/me', to: 'users#me'
   put '/me/band', to: 'bands#update'
   get '/me/band', to: 'bands#show'
@@ -12,8 +17,8 @@ Rails.application.routes.draw do
 
   resources :concerts do
     member do
-      put '/vote', to: "concerts#vote"
-      delete '/unvote', to: "concerts#unvote"
+      put '/pledge', to: "concerts#pledge"
+      delete '/unpledge', to: "concerts#unpledge"
     end
   end
 end
