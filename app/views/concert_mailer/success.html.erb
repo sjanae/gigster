@@ -1,0 +1,22 @@
+<html>
+
+   <head>
+      <meta content = 'text/html; charset = UTF-8' http-equiv = 'Content-Type' />
+   </head>
+
+   <body>
+      <h1>Welcome to Gigster, <%= @user.email %></h1>
+
+      <p>
+         You are receiving this email because you voted to have <%= #vote id for concert? %> happen.<br>
+      </p>
+
+      <p>
+         In order to purchase a ticket, click the following URL:
+         <%= @url %>.
+      </p>
+
+      <p>Thanks for voting and have a great day!</p>
+
+   </body>
+</html>

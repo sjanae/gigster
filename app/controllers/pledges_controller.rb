@@ -26,9 +26,9 @@ class PledgesController < ApplicationController
       @concert = Concert.find(params[:concert_id])
       @concert.pledges.size < 1
       PledgeMailer.send_unsuccess(@user).deliver
-        
+
       # render json: @pledge, status: :ok
-      
+
     else
       render json: @pledge.errors, status: :unprocessable_entity
     end
@@ -57,7 +57,7 @@ class PledgesController < ApplicationController
 
 
   private
-    
+
     def set_concert
       @concert = Concert.find(params[:concert_id])
     end
