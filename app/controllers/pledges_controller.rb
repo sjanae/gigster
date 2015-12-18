@@ -16,13 +16,24 @@ class PledgesController < ApplicationController
   def create
     @pledge = current_user.fan.pledges.create(pledge_params)
     if @pledge.save
+
+      @concert = Concert.find(params[:concert_id])
+      @concert.pledges.size > 1
+      PledgeMailer.send_success(@user).deliver
+
+    elsif @pledge.save
+
+      @concert = Concert.find(params[:concert_id])
+      @concert.pledges.size < 1
+      PledgeMailer.send_unsuccess(@user).deliver
+        
       # render json: @pledge, status: :ok
       
     else
       render json: @pledge.errors, status: :unprocessable_entity
-    
     end
   end
+
 
   def show
     # @pledge = Pledge.find(params[:id])
