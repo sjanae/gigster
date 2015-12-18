@@ -18,7 +18,9 @@ class PledgesController < ApplicationController
       @pledge.concert_id = @concert.id
       @pledge.fan_id = current_user.fan.id
       if @pledge.save
-        render json: @pledge, status: :ok
+        @concert.pledges.size > 1
+        PledgeMailer.send_success(pledge).deliver
+        # render json: @pledge, status: :ok
       else
         render json: @pledge.errors, status: :unprocessable_entity
       end
