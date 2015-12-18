@@ -6,6 +6,7 @@ gem "acts_as_follower"
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'active_model_serializers', '~> 0.10.0.rc3'
 gem 'bcrypt'
+gem 'figaro'
 gem 'doorkeeper'
 gem 'jquery-rails'
 gem 'kaminari'
