@@ -14,23 +14,15 @@ class PledgesController < ApplicationController
   end
 
   def create
-    @pledge = current_user.fan.pledges.create(pledge_params)
-    if @pledge.save
-
-      @concert = Concert.find(params[:concert_id])
-      if @concert.pledges.size >= 1
-        PledgeMailer.send_success(@user).deliver
-      elsif
-        @concert.pledges.size <= 1
-        PledgeMailer.send_unsuccess(@user).deliver
+      @pledge = current_user.fan.pledges.build(pledge_params)
+      @pledge.concert_id = @concert.id
+      @pledge.fan_id = current_user.fan.id
+      if @pledge.save
+        render json: @pledge, status: :ok
+      else
+        render json: @pledge.errors, status: :unprocessable_entity
       end
     end
-      # render json: @pledge, status: :ok
-
-    else
-      render json: @pledge.errors, status: :unprocessable_entity
-    end
-  end
 
 
   def show
@@ -56,16 +48,16 @@ class PledgesController < ApplicationController
 
   private
 
-    def set_concert
-      @concert = Concert.find(params[:concert_id])
-    end
+  def set_concert
+    @concert = Concert.find(params[:concert_id])
+  end
 
-    # def set_pledge
-    #   @pledge = @concert.pledge.find(params[:id])
-    # end
+  # def set_pledge
+  #   @pledge = @concert.pledge.find(params[:id])
+  # end
 
-    def pledge_params
-      params.require(:pledge).permit(:count)
-    end
+  def pledge_params
+    params.require(:pledge).permit(:count)
+  end
 
 end

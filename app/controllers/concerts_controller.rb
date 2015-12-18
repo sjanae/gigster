@@ -17,22 +17,19 @@ class ConcertsController < ApplicationController
   end
 
   def edit
-    
+
   end
 
 
   def create
-    if current_user.type_of_user = "Band"
-      @concert = current_user.concerts.create(concert_params)
+      @concert = current_user.band.concerts.create(concert_params)
       if @concert.save
         render json: @concert, status: :ok
       else
         render json: @concert.errors, status: :unprocessable_entity
       end
-    else render json: @concert.errors, status: :unauthorized
     end
-  end
-  
+
   def update
     @concert = current_user.band.concerts.create(concert_params)
     if @concert.update(concert_params)

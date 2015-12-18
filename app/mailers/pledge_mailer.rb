@@ -1,9 +1,9 @@
 class PledgeMailer < ActionMailer::Base
 
-  def send_success(current_user)
-    @current_user = current_user
-    email = @user.email
-    mail(to: current_user.email,
+  def send_success(user)
+    @fan = user
+    # email = @fan.email
+    mail(to: user.email,
         from: "no-reply@gigster-app.com",
         subject: "Concert is successful",
         body: "The concert the pledged for is happening!"
