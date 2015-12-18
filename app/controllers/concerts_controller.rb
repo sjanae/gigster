@@ -1,6 +1,6 @@
 class ConcertsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_concert, only: [:show, :edit, :update, :destroy]
+  before_action :set_concert, only: [:show, :edit, :update, :destroy, :successful]
 
 
   def index
@@ -43,6 +43,14 @@ class ConcertsController < ApplicationController
     authorize @concert
     @concert.destroy
     head :no_content
+  end
+
+  def successful
+    if @concert.pledges.size > 1
+      return true
+    else
+      return false
+    end
   end
 
 

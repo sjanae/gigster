@@ -7,10 +7,8 @@ class Concert < ActiveRecord::Base
   def status
     if pledges.size < 1
       return "We need more pledges!"
-      UserMailer.send_unsuccess(@pledges.id).delivernow
     else
       return "This concert is DEFINITELY a thing!"
-      UserMailer.send_success(@pledges.id).delivernow
     end
   end
 

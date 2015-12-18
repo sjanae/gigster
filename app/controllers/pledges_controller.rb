@@ -14,9 +14,10 @@ class PledgesController < ApplicationController
   end
 
   def create
-    @pledge = current_user.fan.pledges.new(pledge_params)
+    @pledge = current_user.fan.pledges.create(pledge_params)
     if @pledge.save
-      render json: @pledge, status: :ok
+      # render json: @pledge, status: :ok
+      
     else
       render json: @pledge.errors, status: :unprocessable_entity
     
@@ -28,13 +29,21 @@ class PledgesController < ApplicationController
     render json: @concert.pledges
   end
 
-  def email_fans
+  # def email_fans
+  #   if pledges.size < 1
+  #     PledgeMailer.send_success(@user).deliver
+  #   else
+  #     PledgeMailer.send_unsuccess(@user).deliver
+  # end
 
-  end
+  # def email_bands
+  #    if pledges.size < 1
+  #     PledgeMailer.send_success(@user).deliver
+  #   else
+  #     PledgeMailer.send_unsuccess(@user).deliver
+  # end
 
-  def email_bands
 
-  end
 
   private
     
@@ -47,7 +56,7 @@ class PledgesController < ApplicationController
     # end
 
     def pledge_params
-      params.require(:pledge).permit(:price)
+      params.require(:pledge).permit(:count)
     end
 
 end
