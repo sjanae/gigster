@@ -18,15 +18,13 @@ class PledgesController < ApplicationController
     if @pledge.save
 
       @concert = Concert.find(params[:concert_id])
-      @concert.pledges.size > 1
-      PledgeMailer.send_success(@user).deliver
-
-    elsif @pledge.save
-
-      @concert = Concert.find(params[:concert_id])
-      @concert.pledges.size < 1
-      PledgeMailer.send_unsuccess(@user).deliver
-
+      if @concert.pledges.size >= 1
+        PledgeMailer.send_success(@user).deliver
+      elsif
+        @concert.pledges.size <= 1
+        PledgeMailer.send_unsuccess(@user).deliver
+      end
+    end
       # render json: @pledge, status: :ok
 
     else

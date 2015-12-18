@@ -5,15 +5,21 @@ Rails.application.routes.draw do
   resources :fans
   resources :concerts, only: [:index, :show]
 
+  resources :bands do
+    resources :concerts, only: [:create]
+  end
+
+  resources :concerts, only: [:index, :show] do
+    resources :pledges, only: [:create]
+  end
+
+  resources :pledges, only: [:index, :show]
  
 
   resources :bands do
     member do
       put '/fanship', to: 'bands#fanship'
       delete '/unfanship', to: 'bands#fanship'
-    end
-    resources :concerts do
-      resources :pledges, except: [:edit, :destroy, :update]
     end
   end
 
