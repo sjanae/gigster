@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :users, except: [:new, :edit]
   resources :fans
-  resources :concerts, only: [:index, :show]
+  resources :concerts, only: [:index, :show, :destroy]
 
   resources :bands do
     resources :concerts, only: [:create]
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
 
   resources :pledges, only: [:index, :show]
- 
+
 
   resources :bands do
     member do
