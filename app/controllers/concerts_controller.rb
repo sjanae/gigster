@@ -22,13 +22,13 @@ class ConcertsController < ApplicationController
 
 
   def create
-      @concert = current_user.band.concerts.create(concert_params)
-      if @concert.save
-        render json: @concert, status: :ok
-      else
-        render json: @concert.errors, status: :unprocessable_entity
-      end
+    @concert = current_user.band.concerts.create(concert_params)
+    if @concert.save
+      render json: @concert, status: :ok
+    else
+      render json: @concert.errors, status: :unprocessable_entity
     end
+  end
 
   def update
     @concert = current_user.band.concerts.create(concert_params)
@@ -42,7 +42,6 @@ class ConcertsController < ApplicationController
   def destroy
     authorize @concert
     @concert.destroy
-    head :no_content
   end
 
   def successful
@@ -57,12 +56,11 @@ class ConcertsController < ApplicationController
 
   private
 
-    def set_concert
-      @concert = Concert.find(params[:id])
-    end
-
-    def concert_params
-      params.require(:concert).permit(:band_id, :location, :venue, :funding_goal, :price, :performance_date)
-    end
-
+  def set_concert
+    @concert = Concert.find(params[:id])
   end
+
+  def concert_params
+    params.require(:concert).permit(:band_id, :location, :venue, :funding_goal, :price, :performance_date)
+  end
+end
