@@ -40,7 +40,7 @@ class ConcertsController < ApplicationController
   end
 
   def destroy
-    @concert = current_user.band
+    @concert = current_user.band.concerts
     if @concert.destroy
     else
       render json: @concert.errors, status: :unauthorized
