@@ -47,7 +47,6 @@ class ConcertsController < ApplicationController
     end
   end
 
-  end
 
   def successful
     if @concert.pledges.size > 1
@@ -58,7 +57,7 @@ class ConcertsController < ApplicationController
   end
 
 
-
+  
   private
 
   def set_concert
