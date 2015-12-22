@@ -40,8 +40,9 @@ class ConcertsController < ApplicationController
   end
 
   def destroy
-    @concert = current_user.band.concerts
+    @concert = Concert.find(params[:id])
     if @concert.destroy
+      head :no_content
     else
       render json: @concert.errors, status: :unauthorized
     end
@@ -65,6 +66,6 @@ class ConcertsController < ApplicationController
   end
 
   def concert_params
-    params.require(:concert).permit(:band_id, :location, :venue, :funding_goal, :price, :performance_date)
+    params.require(:concert).permit(:band_id, :location, :venue, :funding_goal, :price, :performance_date, :pledge_key)
   end
 end
