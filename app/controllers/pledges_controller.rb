@@ -1,11 +1,11 @@
 class PledgesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_concert
   # before_action :set_pledge
 
   def index
-    @pledges = @concert.pledges
-    render json: @pledges
+    pledges = Pledge.all
+    render json: @concert.pledges
   end
 
   def new
@@ -18,9 +18,10 @@ class PledgesController < ApplicationController
       @pledge.concert_id = @concert.id
       @pledge.fan_id = current_user.fan.id
       if @pledge.save
-        @concert.pledges.size > 1
-        PledgeMailer.send_success(@pledge).deliver
-        # render json: @pledge, status: :ok
+        render json: @pledge, status: :ok
+        # @concert.pledges.size > 1
+        # PledgeMailer.send_success(@pledge).deliver
+        
       else
         render json: @pledge.errors, status: :unprocessable_entity
       end
