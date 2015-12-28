@@ -190,12 +190,9 @@ JSON:
 #### METHOD: PUT
 
 
-### To create a vote, the authorized token must belong to a fan
-#### URL: ``` https://gigster-app.herokuapp.com/concerts/:id/vote ```
+### To create a vote(pledge), the authorized token must belong to a fan
+#### URL: ``` https://gigster-app.herokuapp.com/concerts/:id/pledges ```
 #### HEADERS: “Authorization”: “Bearer tokenyoureceived “
-#### METHOD: PUT
+#### METHOD: POST
 
-### To unvote from a concert
-#### URL: ``` https://gigster-app.herokuapp.com/concerts/:id/unvote ```
-#### HEADERS: “Authorization”: “Bearer tokenyoureceived “
-#### METHOD: DELETE
+### Currently a pledge can only be created not destroyed
