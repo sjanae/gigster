@@ -195,4 +195,10 @@ JSON:
 #### HEADERS: “Authorization”: “Bearer tokenyoureceived “
 #### METHOD: POST
 
+{
+    "pledges": {
+        "quantity": 12.0
+    }
+}
+
 ### Currently a pledge can only be created not destroyed
