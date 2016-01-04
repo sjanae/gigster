@@ -16,9 +16,9 @@ class Concert < ActiveRecord::Base
   end
 
 
-  # def total_funds
-  #   @concert.pledges.quantity.count
-  # end
+  def total_funds
+    pledges.sum("quantity") * price
+  end
 
 
   def status
