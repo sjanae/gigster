@@ -60,7 +60,7 @@ class PledgesController < ApplicationController
   # end
 
   def pledge_params
-    params.require(:pledge).permit(:count)
+    params.require(:pledge).permit(:quantity)
   end
 
 end

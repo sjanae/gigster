@@ -49,14 +49,6 @@ class ConcertsController < ApplicationController
   end
 
 
-  def successful
-    if @concert.pledges.size > 1
-      return true
-    else
-      return false
-    end
-  end
-
 
 
   private
