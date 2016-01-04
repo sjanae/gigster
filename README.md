@@ -173,7 +173,7 @@ Params:
 ]
 
 ### In order to create a concert, the authorized token must belong to a band
-#### URL: ``` https://gigster-app.herokuapp.com/concerts  ```
+#### URL: ``` https://gigster-app.herokuapp.com/bands/:id/concerts  ```
 #### HEADERS: “Authorization”: “Bearer tokenyoureceived “
 #### METHOD: POST
 JSON:
@@ -185,7 +185,7 @@ JSON:
 }
 
 ### To Update a concert:
-#### URL: ``` https://gigster-app.herokuapp.com/concerts/:id  ```
+#### URL: ``` https://gigster-app.herokuapp.com/bands/:band_id/concerts/:id  ```
 #### HEADERS: “Authorization”: “Bearer tokenyoureceived “
 #### METHOD: PUT
 
