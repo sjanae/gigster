@@ -6,14 +6,12 @@ Rails.application.routes.draw do
   resources :concerts, only: [:index, :show]
 
   resources :bands do
-    resources :concerts, only: [:create, :destroy]
+    resources :concerts, only: [:create, :destroy, :update]
   end
 
   resources :concerts, only: [:index, :show] do
-    resources :pledges, only: [:create]
+    resources :pledges, only: [:create, :show, :index]
   end
-
-  resources :pledges, only: [:index, :show]
 
 
   resources :bands do
