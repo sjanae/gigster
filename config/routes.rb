@@ -3,10 +3,10 @@ Rails.application.routes.draw do
 
   resources :users, except: [:new, :edit]
   resources :fans
-  resources :concerts, only: [:index, :show, :destroy]
+  resources :concerts, only: [:index, :show]
 
   resources :bands do
-    resources :concerts, only: [:create]
+    resources :concerts, only: [:create, :destroy]
   end
 
   resources :concerts, only: [:index, :show] do

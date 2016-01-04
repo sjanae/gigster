@@ -1,7 +1,6 @@
 class ConcertsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_concert, only: [:show, :edit, :update, :destroy, :successful]
-
+  before_action :set_concert, only: [:show, :edit, :update, :successful]
 
   def index
     @concerts = Concert.all
@@ -40,7 +39,7 @@ class ConcertsController < ApplicationController
   end
 
   def destroy
-    @concert = Concert.find(params[:id])
+    @concert = current_user.band.concerts.find(params[:id])
     if @concert.destroy
       head :no_content
     else

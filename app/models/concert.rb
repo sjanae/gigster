@@ -1,5 +1,5 @@
 class Concert < ActiveRecord::Base
-  has_and_belongs_to_many :bands
+  belongs_to :bands
   has_many :pledges
   # validates_uniqueness_of :voter_id
 
