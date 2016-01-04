@@ -1,6 +1,7 @@
 class ConcertsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_concert, only: [:show, :edit, :update, :successful]
+  before_action :set_concert, only: [:show, :edit, :destroy, :successful]
+
 
   def index
     @concerts = Concert.all
@@ -30,7 +31,7 @@ class ConcertsController < ApplicationController
   end
 
   def update
-    @concert = current_user.band.concerts.create(concert_params)
+    @concert = current_user.band.concerts.find(params[:id])
     if @concert.update(concert_params)
       render json: @concert, status: :ok
     else
