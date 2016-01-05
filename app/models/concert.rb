@@ -4,7 +4,7 @@ class Concert < ActiveRecord::Base
   validates_presence_of :price
 
   def successful
-    if pledges.size > 1
+    if pledges.size > funding_goal
       return true
     else
       return false
@@ -45,18 +45,12 @@ class Concert < ActiveRecord::Base
   # end
 
 
-  
+
 
 
   # def deadline
   #   if performance_date = 2.months.from_now && successful == true
   #     EMAIL SUCCESS
-  #   elsif 
-        
-
-  # end
-
-
-  
+  #   elsif
 
 end
