@@ -1,11 +1,7 @@
 class Concert < ActiveRecord::Base
   belongs_to :bands
   has_many :pledges
-  # validates_uniqueness_of :voter_id
-
-  # def initialize
-  #   @pledges = pledges
-  # end
+  validates_presence_of :price
 
   def successful
     if pledges.size > 1
@@ -64,10 +60,3 @@ class Concert < ActiveRecord::Base
   
 
 end
-
-
-
-# email band if performance_date has met expiration and success "false"
-# email band when funding_goal has been met "true"
-
-# email fan when performance_date is 3 days away from expiration

@@ -14,7 +14,7 @@
 
 ## STEP 2:
 #### Login A User
-#### URL: ```https://gigster-app.herokuapp.com/oauth/authorize```
+#### URL: ```https://gigster-app.herokuapp.com/oauth/token```
 #### METHOD: POST
 #### JSON:
   {
@@ -33,6 +33,7 @@ This will return an access token that needs to be added to the header of the web
 
 #### URL: ``` https://gigster-app.herokuapp.com/me```
 #### HEADERS: “Authorization”: “Bearer tokenyoureceived “
+#### METHOD: GET
 JSON:
  {
   "id": ,
@@ -180,7 +181,8 @@ JSON:
    {
     "concert": {
         "location": "Nashville",
-        "venue": "Mercy Lounge"
+        "venue": "Mercy Lounge",
+        "price": 12
     }
 }
 
