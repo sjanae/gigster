@@ -16,7 +16,6 @@ class BandsController < ApplicationController
     band = Band.find(current_user.band_id)
     if band.update(band_params)
       render json: band, status: :ok
-      # redirect_to :back
     else
       render json: band.errors, status: :unprocessable_entity
     end

@@ -1,10 +1,10 @@
 class Concert < ActiveRecord::Base
-  belongs_to :bands
+  belongs_to :band
   has_many :pledges
-  validates_presence_of :price
+  validates_presence_of :price, :funding_goal
 
   def successful
-    if pledges.size > funding_goal
+    if pledges.sum("quantity") * price == funding_goal
       return true
     else
       return false

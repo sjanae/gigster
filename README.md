@@ -182,7 +182,8 @@ JSON:
     "concert": {
         "location": "Nashville",
         "venue": "Mercy Lounge",
-        "price": 12
+        "price": 12,
+        "funding_goal": 50
     }
 }
 
