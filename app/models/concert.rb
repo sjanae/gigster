@@ -4,7 +4,7 @@ class Concert < ActiveRecord::Base
   validates_presence_of :price, :funding_goal
 
   def successful
-    if pledges.sum("quantity") * price == funding_goal
+    if pledges.size > funding_goal
       return true
     else
       return false
