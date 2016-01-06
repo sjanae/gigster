@@ -21,8 +21,8 @@ class FansController < ApplicationController
   end
 
   def destroy
-    @fan = current_user.fan
     if @fan.destroy
+      head :no_content
     else
       render json: @fan.errors, status: :unauthorized
     end
