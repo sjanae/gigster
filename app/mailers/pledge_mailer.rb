@@ -14,24 +14,17 @@ class PledgeMailer < ActionMailer::Base
     )
   end
 
+  def send_success_band(pledge)
+    @user_b = pledge.concert.band.user
+    @concert = pledge.concert
+    @band = @concert.band
+    @goal = @concert.funding_goal
 
-  # def send_success_band(band)
-  #   @user_b = concert.band.user
+    mail(to: @user_b.email,
+        from: "no-reply@gigster-app.com",
+        subject: "Concert is successful!!"
+    )
 
-  #   mail(to: @user_b.email,
-  #       from: "no-reply@gigster-app.com",
-  #       subject: "Just WORK!!"
-  #   )
-
-  # end
-
-    # def send_unsuccess_fan(pledge)
-  #   mail(to: pledge.fan.user.email,
-  #       from: "no-reply@gigster-app.com",
-  #       subject: "Concert is unsuccessful",
-  #       body: "The concert the pledged for isn't happening!"
-  #   )
-
-  # end
+  end
 
 end
