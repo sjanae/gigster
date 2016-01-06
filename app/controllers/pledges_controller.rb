@@ -21,7 +21,8 @@ class PledgesController < ApplicationController
 
         @concert = Concert.find(params[:concert_id])
         if @concert.total_funds > @concert.funding_goal
-          PledgeMailer.send_success_fan(@pledge).deliver && PledgeMailer.send_success_band(@pledge).deliver
+          PledgeMailer.send_success_fan(@pledge).deliver 
+          # && PledgeMailer.send_success_band(@band).deliver
         end
       else
         render json: @pledge.errors, status: :unprocessable_entity
