@@ -22,8 +22,8 @@ class BandsController < ApplicationController
   end
 
   def destroy
-    @band = current_user.band
     if @band.destroy
+      head :no_content
     else
       render json: @band.errors, status: :unauthorized
     end
